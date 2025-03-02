@@ -8,6 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { middleware } from '#start/kernel'
 
 router.where('id', router.matchers.number())
 
@@ -42,5 +43,13 @@ router
     cast: (value) => Number(value),
   })
   */
+
+    router
+      .get('middleware', () => {
+        return {
+          message: 'hi',
+        }
+      })
+      .use(middleware.test())
   })
   .prefix('api')
