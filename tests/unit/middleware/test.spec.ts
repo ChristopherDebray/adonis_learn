@@ -7,9 +7,7 @@ test.group('Middleware test', () => {
     const middleware = new TestMiddleware()
     const ctx = await testUtils.createHttpContext()
 
-    await middleware.handle(ctx, async () => {
-      console.log('Next function invoked')
-    })
+    await middleware.handle(ctx)
 
     // Middleware does not return a response directly. Instead, it modifies ctx.response
     const responseBody = ctx.response.getBody()
