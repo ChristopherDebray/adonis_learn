@@ -9,6 +9,8 @@
 
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
+import AutoSwagger from 'adonis-autoswagger'
+import swagger from '#config/swagger'
 
 router.where('id', router.matchers.number())
 
@@ -32,17 +34,17 @@ router
       }
     })
     /*
-  This is part of Inbuilt matchers like :
-  router.matchers.uuid()
-  router.matchers.slug()
-  
-  We can also define customs
-  
-  .where('id', {
-    match: /^[0-9]+$/,
-    cast: (value) => Number(value),
-  })
-  */
+    This is part of Inbuilt matchers like :
+    router.matchers.uuid()
+    router.matchers.slug()
+    
+    We can also define customs
+    
+    .where('id', {
+      match: /^[0-9]+$/,
+      cast: (value) => Number(value),
+    })
+    */
 
     router
       .get('middleware', () => {
@@ -51,5 +53,16 @@ router
         }
       })
       .use(middleware.test())
+
+    // Swagger Docs Routes - Only Available in Local Environment
+    router.get('/swagger', async () => {
+      return AutoSwagger.default.docs(router.toJSON(), swagger)
+    })
+
+    router.get('/docs', async () => {
+      return AutoSwagger.default.ui('/api/swagger', swagger)
+      // return AutoSwagger.default.scalar("/swagger"); to use Scalar instead. If you want, you can pass proxy url as second argument here.
+      // return AutoSwagger.default.rapidoc("/swagger", "view"); to use RapiDoc instead (pass "view" default, or "read" to change the render-style)
+    })
   })
   .prefix('api')
