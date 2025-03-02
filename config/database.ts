@@ -14,6 +14,10 @@ const dbConfig = defineConfig({
         database: env.get('DB_DATABASE'),
       },
       migrations: {
+        /**
+         * * @todo not allow rollback on production is a must, save for later
+         */
+        disableRollbacksInProduction: true,
         naturalSort: true,
         paths: ['database/migrations'],
       },
