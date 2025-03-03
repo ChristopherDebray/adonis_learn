@@ -12,6 +12,8 @@ import { middleware } from '#start/kernel'
 import AutoSwagger from 'adonis-autoswagger'
 import swagger from '#config/swagger'
 
+const AuthController = () => import('#controllers/auth_controller')
+
 router.where('id', router.matchers.number())
 
 router
@@ -64,5 +66,11 @@ router
       // return AutoSwagger.default.scalar("/swagger"); to use Scalar instead. If you want, you can pass proxy url as second argument here.
       // return AutoSwagger.default.rapidoc("/swagger", "view"); to use RapiDoc instead (pass "view" default, or "read" to change the render-style)
     })
+
+    router.post('/register', [AuthController, 'register']).as('auth.register')
+    router.post('/login', [AuthController, 'login']).as('auth.login')
+    // This middleware check if user is connected and populates the auth parameter
+    router.delete('/logout', [AuthController, 'logout']).as('auth.logout').use(middleware.auth())
+    router.get('/me', [AuthController, 'me']).as('auth.me')
   })
   .prefix('api')
