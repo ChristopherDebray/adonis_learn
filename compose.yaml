@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: adonis_learn
+    ports:
+      - 12421:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

@@ -6,3 +6,6 @@
 
 
 - make typecheck, lint, format mandatory (makefile before each commit or an auto script before)
+
+
+Utilisation des validators
