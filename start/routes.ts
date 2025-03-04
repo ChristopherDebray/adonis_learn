@@ -12,7 +12,7 @@ import { middleware } from '#start/kernel'
 import AutoSwagger from 'adonis-autoswagger'
 import swagger from '#config/swagger'
 import { UserRoles } from '#enums/user/user_roles'
-import { throttle } from './limiter.js'
+import { throttle } from '#start/limiter'
 
 const AuthController = () => import('#controllers/auth_controller')
 
