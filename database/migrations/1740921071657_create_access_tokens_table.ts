@@ -17,6 +17,10 @@ export default class extends BaseSchema {
       table.string('type').notNullable()
       table.string('name').nullable()
       table.string('hash').notNullable()
+      /**
+       * Allows for specific permission (read / write) but isn't the same as roles
+       * If a user has an API token with abilities=['read'], they can’t make write requests, even if they’re an admin.
+       */
       table.text('abilities').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')

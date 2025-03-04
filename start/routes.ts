@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 import AutoSwagger from 'adonis-autoswagger'
 import swagger from '#config/swagger'
+import { UserRoles } from '#enums/user/user_roles'
 
 const AuthController = () => import('#controllers/auth_controller')
 
@@ -48,14 +49,6 @@ router
     })
     */
 
-    router
-      .get('middleware', () => {
-        return {
-          message: 'hi',
-        }
-      })
-      .use(middleware.test())
-
     // Swagger Docs Routes - Only Available in Local Environment
     router.get('/swagger', async () => {
       return AutoSwagger.default.docs(router.toJSON(), swagger)
@@ -71,6 +64,9 @@ router
     router.post('/login', [AuthController, 'login']).as('auth.login')
     // This middleware check if user is connected and populates the auth parameter
     router.delete('/logout', [AuthController, 'logout']).as('auth.logout').use(middleware.auth())
-    router.get('/me', [AuthController, 'me']).as('auth.me')
+    router
+      .get('/me', [AuthController, 'me'])
+      .as('auth.me')
+      .use(middleware.role([UserRoles.ADMIN]))
   })
   .prefix('api')
