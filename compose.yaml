@@ -6,10 +6,15 @@ services:
       POSTGRES_PASSWORD: example
       POSTGRES_DB: adonis_learn
     ports:
-      - 12421:5432
+      - 127.0.0.1:5432:5432
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 127.0.0.1:8080:8080
+  
+  redis:
+    image: redis
+    ports:
+      - 127.0.0.1:6379:6379
