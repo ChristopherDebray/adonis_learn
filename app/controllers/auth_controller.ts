@@ -1,8 +1,9 @@
 import User from '#models/user'
 import { loginValidator, registerValidator } from '#validators/auth'
 import type { HttpContext } from '@adonisjs/core/http'
+import BaseController from './base_controller.js'
 
-export default class AuthController {
+export default class AuthController extends BaseController {
   async register({ request }: HttpContext) {
     const data = await request.validateUsing(registerValidator)
     const user = await User.create(data)
