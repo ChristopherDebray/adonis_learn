@@ -12,6 +12,7 @@ import { middleware } from '#start/kernel'
 import AutoSwagger from 'adonis-autoswagger'
 import swagger from '#config/swagger'
 import { UserRoles } from '#enums/user/user_roles'
+import { throttle } from './limiter.js'
 
 const AuthController = () => import('#controllers/auth_controller')
 
@@ -69,4 +70,5 @@ router
       .as('auth.me')
       .use(middleware.role([UserRoles.ADMIN]))
   })
+  .use(throttle)
   .prefix('api')
