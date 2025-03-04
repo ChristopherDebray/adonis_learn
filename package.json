@@ -65,6 +65,7 @@
     "adonis-autoswagger": "^3.66.0",
     "luxon": "^3.5.0",
     "pg": "^8.13.3",
+    "pino-roll": "^3.0.0",
     "reflect-metadata": "^0.2.2"
   },
   "hotHook": {

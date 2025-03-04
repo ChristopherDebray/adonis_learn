@@ -17,3 +17,18 @@ make typecheck, lint, format mandatory (makefile before each commit or an auto s
 Utilisation des validators
 Nom des fichier en snake case
 nom des dossiers / sous-dossier au pluriel
+npm i pino-roll // For logs rotation
+
+TODO :
+
+[ ] Route resource
+  [ ] Check the syntax (store, destroy etc, or other for regsiter login ?)
+[ ] Logs
+  [x] log rotations
+  [x] log service
+  [ ] Add logging to existing actions
+[ ] queues
+[ ] Services architecture
+
+[ ] Seeders
+[ ] Factory
