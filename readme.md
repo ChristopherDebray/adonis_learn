@@ -23,11 +23,11 @@ TODO :
 
 [ ] Route resource
   [ ] Check the syntax (store, destroy etc, or other for regsiter login ?)
-[ ] Logs
+[x] Logs
   [x] log rotations
   [x] log service
   [x] make logger service into singleton
-  [ ] Add logging to existing actions
+  [x] Add logging to existing actions
 [ ] queues
 [ ] Services architecture
   // We MUST use ctx directly in controller and destructure afterward. The solutions to avoid duplication would be over
@@ -37,7 +37,8 @@ TODO :
 
 ```
 {
-  status: ResponseStatuses.ERROR,
+  isSuccess: true,
+  status: ResponseStatus,
   data: null,
   errors: error.messages,
   message: error.message,

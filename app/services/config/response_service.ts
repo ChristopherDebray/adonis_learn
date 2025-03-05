@@ -1,5 +1,4 @@
 import { ResponseStatusType } from '#contracts/config/response_status_type'
-import { ResponseStatuses } from '#enums/config/response_statuses'
 import { HttpContext, ResponseStatus } from '@adonisjs/core/http'
 
 export default class ResponseService {
@@ -10,7 +9,8 @@ export default class ResponseService {
     statusCode: ResponseStatusType = ResponseStatus.BadRequest
   ) {
     return ctx.response.status(statusCode).send({
-      status: ResponseStatuses.SUCCESS,
+      isSuccess: true,
+      status: statusCode,
       data,
       errors: null,
       message,
@@ -24,7 +24,8 @@ export default class ResponseService {
     statusCode: ResponseStatusType = ResponseStatus.BadRequest
   ) {
     return ctx.response.status(statusCode).send({
-      status: ResponseStatuses.ERROR,
+      isSuccess: false,
+      status: statusCode,
       data: null,
       errors: error.messages,
       message: error.message,
