@@ -26,9 +26,33 @@ TODO :
 [ ] Logs
   [x] log rotations
   [x] log service
+  [x] make logger service into singleton
   [ ] Add logging to existing actions
 [ ] queues
 [ ] Services architecture
+  // We MUST use ctx directly in controller and destructure afterward. The solutions to avoid duplication would be over
+  // engineering and not efficient
+[x] Structure for api response (response service)
+  [x] Change api response using the response service
+
+```
+{
+  status: ResponseStatuses.ERROR,
+  data: null,
+  errors: error.messages,
+  message: error.message,
+  code: error.code,
+}
+```
 
 [ ] Seeders
 [ ] Factory
+
+# IDEAS
+
+Have a script that separetes the logs by taking the security ones to a specific file ? 
+Maybe bad since it would be a huge amount of data (but since we roll the logs thats ok no ?)
+
+# WARNING
+
+Types must be good, compilation on build uses tsc so it has a type checking and will not build
