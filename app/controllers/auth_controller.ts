@@ -4,34 +4,42 @@ import type { HttpContext } from '@adonisjs/core/http'
 import BaseController from './base_controller.js'
 
 export default class AuthController extends BaseController {
-  async register({ request }: HttpContext) {
-    const data = await request.validateUsing(registerValidator)
-    const user = await User.create(data)
+  async register(ctx: HttpContext) {
+    const { request } = ctx
+    try {
+      const data = await request.validateUsing(registerValidator)
+      const user = await User.create(data)
 
-    return User.accessTokens.create(user)
+      return this.response.success(ctx, User.accessTokens.create(user), 'Registered')
+    } catch (error) {
+      return this.response.error(ctx, error)
+    }
   }
 
-  async login({ request }: HttpContext) {
-    const { email, password } = await request.validateUsing(loginValidator)
-    const user = await User.verifyCredentials(email, password)
+  async login(ctx: HttpContext) {
+    const { request } = ctx
+    try {
+      const { email, password } = await request.validateUsing(loginValidator)
+      const user = await User.verifyCredentials(email, password)
 
-    return User.accessTokens.create(user)
+      return this.response.success(ctx, User.accessTokens.create(user), 'Connected')
+    } catch (error) {
+      return this.response.error(ctx, error)
+    }
   }
 
-  async logout({ auth }: HttpContext) {
+  async logout(ctx: HttpContext) {
+    const { auth } = ctx
     const user = auth.user!
     await User.accessTokens.delete(user, user.currentAccessToken.identifier)
 
-    return {
-      message: 'ok',
-    }
+    return this.response.success(ctx, null, 'Logged out')
   }
 
-  async me({ auth }: HttpContext) {
+  async me(ctx: HttpContext) {
+    const { auth } = ctx
     await auth.check()
 
-    return {
-      user: auth.user,
-    }
+    return this.response.success(ctx, { user: auth.user }, 'Logged out')
   }
 }
