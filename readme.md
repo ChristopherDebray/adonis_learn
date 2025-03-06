@@ -34,7 +34,13 @@ TODO :
 // engineering and not efficient
 [x] Structure for api response (response service)
 [x] Change api response using the response service
+[x] Seeders
+[x] Factory
 
+Use seeders for local
+Use factory in seeders or in tests to generate it's fake data
+
+Api responses structure
 ```
 {
   isSuccess: true,
@@ -46,12 +52,6 @@ TODO :
 }
 ```
 
-[ ] Seeders
-[ ] Factory
-
-Use seeders for local or dev
-Use factory in seeders or in tests to generate it's fake data
-
 # IDEAS
 
 Have a script that separetes the logs by taking the security ones to a specific file ?
@@ -60,3 +60,9 @@ Maybe bad since it would be a huge amount of data (but since we roll the logs th
 # WARNING
 
 Types must be good, compilation on build uses tsc so it has a type checking and will not build
+
+
+# Installation
+
+- make d-up
+- make d-init-db

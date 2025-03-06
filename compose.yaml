@@ -1,5 +1,6 @@
 services:
   postgres:
+    container_name: adonis_learn_postgres
     image: postgres
     environment:
       POSTGRES_USER: postgres
@@ -9,12 +10,14 @@ services:
       - 127.0.0.1:5432:5432
 
   adminer:
+    container_name: adonis_learn_adminer
     image: adminer
     restart: always
     ports:
       - 127.0.0.1:8080:8080
 
   redis:
+    container_name: adonis_learn_redis
     image: redis
     ports:
       - 127.0.0.1:6379:6379
