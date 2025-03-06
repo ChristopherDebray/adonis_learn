@@ -1,5 +1,5 @@
-import { UserFactory } from '#database/factories/user/user_factory'
-import { UserRoles } from '#enums/user/user_roles'
+import { UserFactory } from '#database/factories/users/user_factory'
+import { UserRoles } from '#enums/users/user_roles'
 import User from '#models/user/user'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 

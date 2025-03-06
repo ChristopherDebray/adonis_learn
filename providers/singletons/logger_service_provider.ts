@@ -1,4 +1,4 @@
-import LoggerService from '#services/config/logger_service'
+import LoggerService from '#services/configs/logger_service'
 import type { ApplicationService } from '@adonisjs/core/types'
 
 export default class LoggerServiceProvider {

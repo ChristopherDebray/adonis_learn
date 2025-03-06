@@ -2,7 +2,7 @@ import { inject } from '@adonisjs/core'
 import Logger from '@adonisjs/core/services/logger'
 import { type LoggerService as AdonisLoggerServiceType } from '@adonisjs/core/types'
 import { HttpContext } from '@adonisjs/core/http'
-import { LoggerFlags } from '#enums/config/logger_flags'
+import { LoggerFlags } from '#enums/configs/logger_flags'
 
 @inject()
 export default class LoggerService {

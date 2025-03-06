@@ -1,4 +1,4 @@
-import { ResponseStatusType } from '#contracts/config/response_status_type'
+import { ResponseStatusType } from '#contracts/configs/response_status_type'
 import { HttpContext, ResponseStatus } from '@adonisjs/core/http'
 
 export default class ResponseService {

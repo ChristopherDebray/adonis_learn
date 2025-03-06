@@ -2,7 +2,7 @@ import User from '#models/user/user'
 import { loginValidator, registerValidator } from '#validators/auth'
 import type { HttpContext } from '@adonisjs/core/http'
 import BaseController from './base_controller.js'
-import { LoggerFlags } from '#enums/config/logger_flags'
+import { LoggerFlags } from '#enums/configs/logger_flags'
 
 export default class AuthController extends BaseController {
   async register(ctx: HttpContext) {

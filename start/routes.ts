@@ -11,7 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 import AutoSwagger from 'adonis-autoswagger'
 import swagger from '#config/swagger'
-import { UserRoles } from '#enums/user/user_roles'
+import { UserRoles } from '#enums/users/user_roles'
 import { throttle } from '#start/limiter'
 
 const AuthController = () => import('#controllers/auth_controller')
