@@ -12,7 +12,8 @@ export const registerValidator = vine.compile(
 
         return !match
       }),
-
+    firstName: vine.string(),
+    lastName: vine.string(),
     password,
   })
 )

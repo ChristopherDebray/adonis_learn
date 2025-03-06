@@ -6,7 +6,7 @@ export default class ResponseService {
     ctx: HttpContext,
     data: any,
     message: string = 'Request successful.',
-    statusCode: ResponseStatusType = ResponseStatus.BadRequest
+    statusCode: ResponseStatusType = ResponseStatus.Created
   ) {
     return ctx.response.status(statusCode).send({
       isSuccess: true,

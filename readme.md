@@ -29,7 +29,7 @@ TODO :
   [x] make logger service into singleton
   [x] Add logging to existing actions
 [ ] queues
-[ ] Services architecture
+[x] Services architecture
   // We MUST use ctx directly in controller and destructure afterward. The solutions to avoid duplication would be over
   // engineering and not efficient
 [x] Structure for api response (response service)

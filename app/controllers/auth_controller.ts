@@ -1,4 +1,4 @@
-import User from '#models/user'
+import User from '#models/user/user'
 import { loginValidator, registerValidator } from '#validators/auth'
 import type { HttpContext } from '@adonisjs/core/http'
 import BaseController from './base_controller.js'
