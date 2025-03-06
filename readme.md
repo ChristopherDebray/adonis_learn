@@ -22,18 +22,18 @@ npm i pino-roll // For logs rotation
 TODO :
 
 [ ] Route resource
-  [ ] Check the syntax (store, destroy etc, or other for regsiter login ?)
+[ ] Check the syntax (store, destroy etc, or other for regsiter login ?)
 [x] Logs
-  [x] log rotations
-  [x] log service
-  [x] make logger service into singleton
-  [x] Add logging to existing actions
+[x] log rotations
+[x] log service
+[x] make logger service into singleton
+[x] Add logging to existing actions
 [ ] queues
 [x] Services architecture
-  // We MUST use ctx directly in controller and destructure afterward. The solutions to avoid duplication would be over
-  // engineering and not efficient
+// We MUST use ctx directly in controller and destructure afterward. The solutions to avoid duplication would be over
+// engineering and not efficient
 [x] Structure for api response (response service)
-  [x] Change api response using the response service
+[x] Change api response using the response service
 
 ```
 {
@@ -54,7 +54,7 @@ Use factory in seeders or in tests to generate it's fake data
 
 # IDEAS
 
-Have a script that separetes the logs by taking the security ones to a specific file ? 
+Have a script that separetes the logs by taking the security ones to a specific file ?
 Maybe bad since it would be a huge amount of data (but since we roll the logs thats ok no ?)
 
 # WARNING

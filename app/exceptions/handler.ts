@@ -8,12 +8,28 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    */
   protected debug = !app.inProduction
 
+  protected context(ctx: HttpContext) {
+    return {
+      requestId: ctx.request.id(),
+      userId: ctx.auth.user?.id,
+      ip: ctx.request.ip(),
+    }
+  }
+
   /**
    * The method is used for handling errors and returning
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
     return super.handle(error, ctx)
+
+    /**
+     * @todo check the behavior of adonis error handler to replace it or not
+     *
+     * this.logger.error(ctx, error.message, error) // Log the error
+     *
+     * return this.responseService.error(ctx, error, error.status || 500)
+     */
   }
 
   /**

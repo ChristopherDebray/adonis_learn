@@ -26,7 +26,6 @@ router
       }
     })
 
-
     // Swagger Docs Routes - Only Available in Local Environment
     router.get('/swagger', async () => {
       return AutoSwagger.default.docs(router.toJSON(), swagger)
