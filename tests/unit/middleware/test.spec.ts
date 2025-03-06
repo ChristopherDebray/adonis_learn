@@ -12,8 +12,6 @@ test.group('Middleware test', () => {
     // Middleware does not return a response directly. Instead, it modifies ctx.response
     const responseBody = ctx.response.getBody()
 
-    console.log(responseBody)
-
     // .equal cannot work since this would be js object comparison ({} === {})
     assert.deepEqual(responseBody, { status: 401, message: 'Ending request' })
   })

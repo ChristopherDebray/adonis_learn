@@ -49,6 +49,9 @@ TODO :
 [ ] Seeders
 [ ] Factory
 
+Use seeders for local or dev
+Use factory in seeders or in tests to generate it's fake data
+
 # IDEAS
 
 Have a script that separetes the logs by taking the security ones to a specific file ? 
