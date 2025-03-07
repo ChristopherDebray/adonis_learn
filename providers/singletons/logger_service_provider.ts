@@ -6,7 +6,6 @@ export default class LoggerServiceProvider {
 
   register() {
     this.app.container.singleton(LoggerService, () => {
-      console.log('LoggerService instantiated only once')
       return new LoggerService()
     })
   }

@@ -53,7 +53,6 @@ run-dbt-refresh:
 run-tests:
 	@printf "$(CYAN)Execute all test suites$(NOCOLOR) \n"
 	NODE_ENV=test node ace test
-	@printf "$(GREEN)All test were successful$(NOCOLOR) \n"
 
 ## Code quality
 

@@ -24,8 +24,8 @@ export default class extends BaseSeeder {
       },
       {
         email: 'supervisor@gmail.com',
-        firstName: 'admin',
-        lastName: 'admin',
+        firstName: 'supervisor',
+        lastName: 'supervisor',
         password: this.defaultPassword,
         role: UserRoles.SUPERVISOR,
       },
