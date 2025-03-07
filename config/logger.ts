@@ -13,7 +13,9 @@ const loggerConfig = defineConfig({
     app: {
       enabled: true,
       name: env.get('APP_NAME'),
-      level: env.get('LOG_LEVEL'),
+      // Disable logs in tests except fatal
+      // level: process.env.NODE_ENV === 'test' ? 'fatal' : env.get('LOG_LEVEL'),
+      level: process.env.NODE_ENV === 'test' ? 'fatal' : env.get('LOG_LEVEL'),
       transport: {
         targets: targets()
           .pushIf(!app.inProduction, targets.pretty())
