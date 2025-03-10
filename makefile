@@ -56,15 +56,19 @@ run-tests:
 
 ## Code quality
 
-.PHONY: run-merge-checker
-run-merge-checker:
-	@printf "$(CYAN)Execute multiple checks before merge$(NOCOLOR) \n"
+.PHONY: run-format-checks
+run-format-checks:
 	@printf "$(CYAN)Execute linter$(NOCOLOR) \n"
 	npm run lint
 	@printf "$(GREEN)Linter successful$(NOCOLOR) \n"
 	@printf "$(CYAN)Execute prettier format$(NOCOLOR) \n"
 	npm run format
 	@printf "$(GREEN)Prettier successful$(NOCOLOR) \n"
+
+run-type-checks:
 	@printf "$(CYAN)Execute tsc typecheck$(NOCOLOR) \n"
 	npm run typecheck
-	@printf "$(GREEN)All checks passed, ready to merge !$(NOCOLOR) \n"
+	@printf "$(GREEN)Type check successful$(NOCOLOR) \n"
+
+.PHONY: run-merge-checks
+run-merge-checks: run-format-checks run-type-checks run-tests

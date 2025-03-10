@@ -19,7 +19,7 @@ test.group('Auth controller', (group) => {
     response.assertStatus(ResponseStatus.Created)
     const user = await User.query().where('email', 'testing@gmail.com').first()
     assert.isNotNull(user)
-    assert.equal(user.email, 'testing@gmail.com')
+    assert.equal(user?.email, 'testing@gmail.com')
   })
 
   test('Register fail, already used email', async ({ client, assert }) => {

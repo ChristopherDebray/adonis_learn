@@ -13,7 +13,8 @@ import limiter from '@adonisjs/limiter/services/main'
 
 export const throttle = limiter.define('global', () => {
   if (process.env.NODE_ENV === 'test') {
-    return
+    // Mandatory to avoid typing errors
+    return limiter.allowRequests(Infinity).every('1 minute')
   }
   return limiter.allowRequests(15).every('1 minute')
 })

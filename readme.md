@@ -12,21 +12,22 @@
   - With possibility to check if role is enough
 - add node ace add @adonisjs/redis (used for limiter and queues)
 - add rate limiters : node ace add @adonisjs/limiter
+- npm i -D c8 // For test coverage
 
 make typecheck, lint, format mandatory (makefile before each commit or an auto script before)
 Utilisation des validators
 Nom des fichier en snake case
 Structure des dossier :
-  nom des dossiers / sous-dossier au pluriel
-  /!\ Exceptés pour certains dossier pré crées par adonis (database, config, middleware, etc)
+nom des dossiers / sous-dossier au pluriel
+/!\ Exceptés pour certains dossier pré crées par adonis (database, config, middleware, etc)
 
 npm i pino-roll // For logs rotation
 
 TODO :
 
-[ ] Route resource
-[ ] Check the syntax (store, destroy etc, or other for regsiter login ?)
-[ ] queues
+[x] Route resource
+  [x] Check the syntax (store, destroy etc, or other for regsiter login ?)
+[ ] queues // Ignore for now, not used
 [x] Logs
 [x] log rotations
 [x] log service
@@ -39,11 +40,22 @@ TODO :
 [x] Change api response using the response service
 [x] Seeders
 [x] Factory
+[x] Tests for auth controller
+  [ ] Add test coverage check npm i -D c8
+[ ] Code checkers
+  [x] makefile commands to check :
+    [x] code quality
+    [x] Tests
+    [x] Types
+    [x] Merge checker (all of the above)
+  [ ] Pre commit, run code quality and type checking
+
 
 Use seeders for local
 Use factory in seeders or in tests to generate it's fake data
 
 Api responses structure
+
 ```
 {
   isSuccess: true,
@@ -63,7 +75,6 @@ Maybe bad since it would be a huge amount of data (but since we roll the logs th
 # WARNING
 
 Types must be good, compilation on build uses tsc so it has a type checking and will not build
-
 
 # Installation
 
