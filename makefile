@@ -33,19 +33,26 @@ d-init-db:
 	@printf "$(CYAN)Creates the database for test, runs migrations with seeders on local and test$(NOCOLOR) \n"
 	${DOCKER_DB_BASH} -c "psql -U postgres -c 'CREATE DATABASE adonis_learn_test;'"
 	make run-db-refresh && make run-dbt-refresh
+
+.PHONY: p-init-git-hooks
+p-init-git-hooks:
+	@printf "$(CYAN)Add the pre-commit hook to local, on each commit runs code quality and type check$(NOCOLOR) \n"
+	@cp docs/git/pre-commit .git/hooks/pre-commit
+	@printf "✅ $(GREEN)Pre commit copy successful$(NOCOLOR) \n"
+
 ## Database
 
 .PHONY: run-db-refresh
 run-db-refresh:
 	@printf "$(CYAN)Refresh the whole database and executes seeders$(NOCOLOR) \n"
 	node ace migration:fresh --seed
-	@printf "$(GREEN)Database migrations and seeders execution was successful$(NOCOLOR) \n"
+	@printf "✅ $(GREEN)Database migrations and seeders execution was successful$(NOCOLOR) \n"
 
 .PHONY: run-db-test-refresh
 run-dbt-refresh:
 	@printf "$(CYAN)Refresh the whole database and executes seeders for test database$(NOCOLOR) \n"
 	NODE_ENV=test node ace migration:fresh --seed
-	@printf "$(GREEN)Test database migrations and seeders execution was successful$(NOCOLOR) \n"
+	@printf "✅ $(GREEN)Test database migrations and seeders execution was successful$(NOCOLOR) \n"
 
 ## Tests
 
@@ -60,15 +67,15 @@ run-tests:
 run-format-checks:
 	@printf "$(CYAN)Execute linter$(NOCOLOR) \n"
 	npm run lint
-	@printf "$(GREEN)Linter successful$(NOCOLOR) \n"
+	@printf "✅ $(GREEN)Linter successful$(NOCOLOR) \n"
 	@printf "$(CYAN)Execute prettier format$(NOCOLOR) \n"
 	npm run format
-	@printf "$(GREEN)Prettier successful$(NOCOLOR) \n"
+	@printf "✅ $(GREEN)Prettier successful$(NOCOLOR) \n"
 
 run-type-checks:
 	@printf "$(CYAN)Execute tsc typecheck$(NOCOLOR) \n"
 	npm run typecheck
-	@printf "$(GREEN)Type check successful$(NOCOLOR) \n"
+	@printf "✅ $(GREEN)Type check successful$(NOCOLOR) \n"
 
 .PHONY: run-merge-checks
 run-merge-checks: run-format-checks run-type-checks run-tests

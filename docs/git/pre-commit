@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+
+echo "🔍 Running pre-commit checks..."
+
+# Run Prettier Check (does NOT auto-fix, only reports issues)
+echo "🔍 Checking Prettier formatting..."
+npm run format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Prettier check failed! Fix formatting before committing."
+  exit 1
+fi
+
+# Run ESLint (without auto-fix)
+echo "🔍 Running ESLint..."
+npm run lint -- --no-fix
+if [ $? -ne 0 ]; then
+  echo "❌ ESLint found issues! Fix them before committing."
+  exit 1
+fi
+
+# Run TypeScript Type Check
+echo "🔍 Running TypeScript type check..."
+npm run typecheck
+if [ $? -ne 0 ]; then
+  echo "❌ Type errors detected! Fix them before committing."
+  exit 1
+fi
+
+echo "✅ All checks passed. Proceeding with commit."
+exit 0

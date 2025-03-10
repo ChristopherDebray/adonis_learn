@@ -13,6 +13,7 @@
 - add node ace add @adonisjs/redis (used for limiter and queues)
 - add rate limiters : node ace add @adonisjs/limiter
 - npm i -D c8 // For test coverage
+- add script for precommit hook
 
 make typecheck, lint, format mandatory (makefile before each commit or an auto script before)
 Utilisation des validators
@@ -26,7 +27,7 @@ npm i pino-roll // For logs rotation
 TODO :
 
 [x] Route resource
-  [x] Check the syntax (store, destroy etc, or other for regsiter login ?)
+[x] Check the syntax (store, destroy etc, or other for regsiter login ?)
 [ ] queues // Ignore for now, not used
 [x] Logs
 [x] log rotations
@@ -41,15 +42,16 @@ TODO :
 [x] Seeders
 [x] Factory
 [x] Tests for auth controller
-  [ ] Add test coverage check npm i -D c8
-[ ] Code checkers
-  [x] makefile commands to check :
-    [x] code quality
-    [x] Tests
-    [x] Types
-    [x] Merge checker (all of the above)
-  [ ] Pre commit, run code quality and type checking
-
+[ ] Add test coverage check npm i -D c8
+[x] Code checkers
+[x] makefile commands to check :
+[x] code quality
+[x] Tests
+[x] Types
+[x] Merge checker (all of the above)
+[x] Pre commit, run code quality and type checking
+[x] Add precommit script.
+[x] Add script "format:check": "prettier --check ." in package json
 
 Use seeders for local
 Use factory in seeders or in tests to generate it's fake data
